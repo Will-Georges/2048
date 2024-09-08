@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html id="html">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>2048</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <section class="hero is-success is-medium">
+    <div class="hero-head">
+      <nav class="navbar">
+
+        <div class="navbar-brand">
+          <div class="navbar-start">
+            <div class="navbar-item">
+              <img src="logo.png">
+            </div>
+            <div class="navbar-item">
+              <div class="dropdown" id="theme-button">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Themes</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" id="default">
+                      Chill
+                    </a>
+                    <a class="dropdown-item" id="winter">
+                      Winter
+                    </a>
+                    <a class="dropdown-item" id="christmas">
+                      Christmas
+                    </a>
+                    <a class="dropdown-item" id="rage">
+                      Scary
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="button is-light" id="profile">
+                <strong>Profile</strong>
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-light" id="signup">
+                <strong>Sign up</strong>
+              </a>
+            </div>
+            <div class="navbar-item">
+              <a class="button is-light" id="instruction-button">
+                <strong>Instructions</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <section class="hero-body">
+    <div class="container score-columns">
+      <div class="column score-box has-background-warning">
+        <div class="is-family-sans-serif">
+          Score
+        </div>
+        <div class="has-text-link" id="score">
+          00000
+        </div>
+      </div>
+
+      <div class="column score-box has-background-warning">
+        <div class="is-family-sans-serif">
+          High Score
+        </div>
+        <div class="has-text-link" id="high-score">
+          00000
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section game-section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-1 square has-text-weight-bold" id="A0">
+          1
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="A1">
+          2
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="A2">
+          3
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="A3">
+          4
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-1 square has-text-weight-bold" id="B0">
+          1
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="B1">
+          2
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="B2">
+          3
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="B3">
+          4
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-1 square has-text-weight-bold" id="C0">
+          1
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="C1">
+          2
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="C2">
+          3
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="C3">
+          4
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-1 square has-text-weight-bold" id="D0">
+          1
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="D1">
+          2
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="D2">
+          3
+        </div>
+        <div class="column is-1 square has-text-weight-bold" id="D3">
+          4
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- modal for instructions -->
+  <div class="modal" id="modal">
+    <div class="modal-background" id="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Instructions</p>
+        <button class="delete" aria-label="close" id="modal-close-button"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Use the W,A,S,D keys, or the arrow keys to move the tiles. Tiles with the same number merge. Your aim is to
+          get at least one tile to 2048. If you cannot make any more moves, the game will end.</p>
+        <br>
+        <br>
+        <p>
+          Sign up today so that your scores will save.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal for reaching 2048 -->
+  <div class="modal" id="modal-2048">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Congratulations for reaching 2048</p>
+      </header>
+      <section class="modal-card-body">
+        <p> Well done on reaching 2048! Would you like to continue for as long as possible, or do you want to end.</p>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="modal-2048-continue">Continue</button>
+        <button class="button" id="modal-2048-end">End Game</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal for end of game -->
+  <div class="modal" id="end-game-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Game Over</p>
+      </header>
+      <section class="modal-card-body">
+        <p> Better luck next time.</p>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="end-modal-again">Play Again</button>
+        <button class="button" id="end-modal-close">Close Game</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal for signing up -->
+  <div class="modal" id="signup-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Sign up to save your scores!</p>
+        <button class="delete" aria-label="close" id="signup-close-button"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Username:
+            <div class="control">
+              <input class="input" type="text" id="username" autocomplete="username">
+          </label>
+        </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password:
+        <div class="control">
+          <input class="input" type="text" id="password" autocomplete="current-password">
+        </div>
+      </label>
+    </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="submit-signup">Sign Up</button>
+    </footer>
+  </div>
+  </div>
+
+  <!-- Modal for Profile -->
+  <div class="modal" id="profile-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" id="welcome-player">Hello - Player</p>
+      </header>
+      <section class="modal-card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="profile-table-body">
+
+          </tbody>
+        </table>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="profile-modal-close">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

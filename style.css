@@ -1,0 +1,94 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-image: url("default.jpeg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.square {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  margin: 5px;
+  height: 100px;
+  width: 100px;
+  font-size: 32px;
+  transition: transform 0.1s ease-in-out;
+}
+
+#profile {
+  display: none;
+}
+
+.container.score-columns {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.columns.has-text-centered .square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Style for the curved boxes */
+.score-box {
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  /* Add margin to separate the score boxes */
+  width: 200px;
+  /* Update the width to make it narrower */
+}
+
+.value-bigger-2048 {
+  background-color: rgb(100, 100, 100);
+}
+
+.value-2048 {
+  background-color: rgb(237, 194, 46);
+}
+
+.value-1024 {
+  background-color: rgb(237, 197, 63);
+}
+
+.value-512 {
+  background-color: rgb(237, 200, 80);
+}
+
+.value-256 {
+  background-color: rgb(237, 204, 97);
+}
+
+.value-128 {
+  background-color: rgb(237, 207, 114);
+}
+
+.value-64 {
+  background-color: rgb(246, 94, 59);
+}
+
+.value-32 {
+  background-color: rgb(246, 124, 95);
+}
+
+.value-16 {
+  background-color: rgb(245, 149, 99);
+}
+
+.value-8 {
+  background-color: rgb(242, 177, 121);
+}
+
+.value-4 {
+  background-color: rgb(237, 224, 200);
+}
+
+.value-2 {
+  background-color: rgb(238, 228, 218);
+}
